@@ -1,0 +1,26 @@
+/.idea/*
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.class
+*.txt
+*.lst
+*.war
+*.iml
+*.log
+*.sql
+*.iml
+*.o *.lo *.la *.al .libs *.so *.so.[0-9]* *.a *.pyc *.pyo __pycache__ *.rej *~ #*# .#* .*.swp  [Tt]humbs.db .settings
+.settings/*
+target
+target/*
+.classpath
+.project
+*.apk
+*.prefs
+*.svn
