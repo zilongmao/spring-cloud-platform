@@ -5,9 +5,12 @@ import com.idol.beans.Pay;
 import com.idol.service.PayService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * TODO:
@@ -25,6 +28,9 @@ public class PayController {
 
     @Value("${server.port}")
     private String serverPort;
+
+    @Resource
+    private DiscoveryClient discoveryClient;
 
     @PostMapping(value = "/insert")
     public CommonResult insert(@RequestBody Pay pay) {
@@ -46,5 +52,24 @@ public class PayController {
             return new CommonResult(200, "查询成功", pay);
         }
         return new CommonResult(444, "查询失败,id:" + id, null);
+    }
+
+    /**
+     * 获取服务清单列表
+     * @return
+     */
+    @GetMapping(value = "/discovery")
+    public Object discovery() {
+        List<String> services = discoveryClient.getServices();
+        for (String service : services) {
+            log.info("service : {}", service);
+        }
+
+        List<ServiceInstance> instances = discoveryClient.getInstances("cloud-pay-service");
+        for (ServiceInstance instance : instances) {
+            log.info("instance --- serviceId: {}, host: {}, port: {}, uri: {}",
+                    instance.getServiceId(), instance.getHost(), instance.getPort(), instance.getUri());
+        }
+        return this.discoveryClient;
     }
 }
