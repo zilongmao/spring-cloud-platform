@@ -8,7 +8,6 @@
 *.tar
 *.zip
 *.class
-*.txt
 *.lst
 *.war
 *.iml
