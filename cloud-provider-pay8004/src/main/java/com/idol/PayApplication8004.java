@@ -6,22 +6,21 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * TODO:
  *
- * @Author 邻座旅客
- * Create by 湖南爱豆 on 2020/11/16 07:00
+ * @Created by 湖南爱豆
+ * @Date 2021/3/8 15 25
+ * @Author: 邻座旅客
  */
 @Slf4j
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-@EnableEurekaClient // 代表本类被服务注册中心发现
-@EnableDiscoveryClient
-public class PayApplication8002 {
+@EnableDiscoveryClient // 该注解用于向使用consul或zookeeper作为注册中心时注册服务
+public class PayApplication8004 {
 
     public static void main(String[] args) {
-        SpringApplication.run(PayApplication8002.class, args);
-        log.info("============ 支付模块8002启动成功 ============");
+        SpringApplication.run(PayApplication8004.class, args);
+        log.info("============ 支付模块8004启动成功 ============");
     }
 }
