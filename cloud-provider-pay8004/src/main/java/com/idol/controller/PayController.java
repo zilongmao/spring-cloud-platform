@@ -32,6 +32,7 @@ public class PayController {
 
     @GetMapping("/zk")
     private String payZk() {
+        log.info("payZk被调用...");
         return "spring cloud with zookeeper : " + serverPort + "\t" +UUID.randomUUID().toString();
     }
 
