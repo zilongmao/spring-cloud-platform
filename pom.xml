@@ -21,6 +21,7 @@
         <module>cloud-provider-pay8002</module>
         <module>cloud-provider-pay8004</module>
         <module>cloud-consumerzk-order80</module>
+        <module>cloud-providerconsul-pay8006</module>
     </modules>
 
 
